@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RJHY_CSE</title>
+	<link rel="stylesheet" href="../static/w3.css" type="text/css">
+</head>
+<body>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <a href="/ahome" class="w3-bar-item w3-button">Home</a>
+  <a href="/auser" class="w3-bar-item w3-button">User Details</a>
+  <a href="/acovid" class="w3-bar-item w3-button">Covid Cases</a>
+  <a href="/atravel" class="w3-bar-item w3-button">User Travel Details</a>
+  <a href="/aquality" class="w3-bar-item w3-button">Air Quality</a>
+  <a href="/" class="w3-bar-item w3-button">Logout</a>
+</div>
+
+<div id="main">
+
+<div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container w3-center">
+    <h1>Human Mobility and Air Quality Analysis</h1>
+  </div>
+</div>
+<br><br><br>
+<div class="w3-container w3-margin-top ">
+<div class="w3-card-4">
+    <div class="w3-container w3-green w3-center">
+      <h2>User Details</h2>
+    </div>
+    <table class="w3-table w3-striped w3-bordered w3-hoverable w3-center">
+<thead>
+<tr class="w3-teal">
+<th>Name</th><th>Email</th><th>Mobile</th><th>Location</th>
+</tr>
+</thead>
+{% for x in result %}
+<tbody>
+<tr>
+<td>{{ x [0] }}</td>
+<td>{{ x [1] }}</td>
+<td>{{ x [3] }}</td>
+<td>{{ x [4] }}</td>
+</tr></tbody>
+{% endfor %}
+</table>
+</div>
+</div>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+</body>
+</html>

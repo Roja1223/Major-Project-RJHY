@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RJHY_CSE</title>
+	<link rel="stylesheet" href="../static/w3.css" type="text/css">
+</head>
+<body>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <a href="/uhome" class="w3-bar-item w3-button">Home</a>
+  <a href="/covid" class="w3-bar-item w3-button">COVID Cases</a>
+  <a href="/travel" class="w3-bar-item w3-button">Travel</a>
+  <a href="/qual" class="w3-bar-item w3-button">Air Quality</a>
+  <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+</div>
+
+<div id="main">
+
+<div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container w3-center">
+    <h1>Human Mobility and Air Quality Analysis</h1>
+  </div>
+</div>
+<br><br><br>
+{% with messages = get_flashed_messages() %}  
+         {% if messages %}  
+               {% for message in messages %}  
+                    <p>{{ message }}</p>  
+               {% endfor %}  
+         {% endif %}  
+      {% endwith %} 
+<div class="w3-container w3-margin-top ">
+<div class="w3-card-4">
+    <div class="w3-container w3-green w3-center">
+      <h2>Travel Details</h2>
+    </div>
+    <form class="w3-container w3-card-4" action="/utravel" method="POST">
+  <p>      
+  <label class="w3-text-blue"><b>Travel Purpose</b></label>
+  <select class="w3-input w3-border w3-round-large" name='tp'>
+  <option value="">---Select---</option>
+  <option value="Essential Trips">Essential Trips</option>
+  <option value="Non=essesntial Trips">Non=essesntial Trips</option>
+  </select></p>
+  <p>      
+  <label class="w3-text-blue"><b>Travel Mode</b></label>
+  <select class="w3-input w3-border w3-round-large" name='tm'>
+  <option value="">---Select---</option>
+  <option value="Public Transport">Public Transport</option>
+  <option value="Private Transport">Private Transport</option>
+  <option value="Active Transport">Active Transport</option>
+  </select></p>
+  <p>      
+  <label class="w3-text-blue"><b>Age</b></label>
+  <input class="w3-input w3-border" name="age" type="text"></p>
+  <p>      
+  <label class="w3-text-blue"><b>Gender</b></label>
+  <input class="w3-radio w3-border" name="gen" type="radio" value="Male">Male
+  <input class="w3-radio w3-border" name="gen" type="radio" value="Female">Female</p>
+  <p>      
+  <label class="w3-text-blue"><b>Health Condition</b></label>
+  <select class="w3-input w3-border w3-round-large" name='hc'>
+  <option value="">---Select---</option>
+  <option value="Asthma">Asthma</option>
+  <option value="Heart">Heart Disease</option>
+  <option value="Diabetes">Diabetes</option>
+  <option value="No">No</option></select>
+  </p>
+  <p>      
+  <label class="w3-text-blue"><b>Date</b></label>
+  <input class="w3-input w3-border" name="sd" type="text"></p>
+  <!-- <p>      
+  <label class="w3-text-blue"><b>End Date</b></label>
+  <input class="w3-input w3-border" name="ed" type="text"></p> -->
+  <p>      
+  <button class="w3-btn w3-blue">Upload</button></p>
+</form>
+</div>
+</div>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+</body>
+</html>
